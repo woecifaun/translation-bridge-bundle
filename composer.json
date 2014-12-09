@@ -1,0 +1,20 @@
+{
+    "name": "faun/translation-bridge-bundle",
+    "type": "symfony-bundle",
+    "description": "helper for translated related pages ",
+    "keywords": ["deploy","command"],
+    "homepage": "no page yet",
+    "license": "CC-BY-SA-3.0",
+    "authors": [
+        {
+            "name": "Faun",
+            "homepage": "no page yet",
+            "email": "woecifaun@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "target-dir": "Faun/TranslationBridgeBundle"
+}
