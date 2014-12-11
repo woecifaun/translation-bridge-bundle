@@ -1,20 +1,23 @@
 {
-    "name": "faun/translation-bridge-bundle",
+    "name": "woecifaun/translation-bridge-bundle",
     "type": "symfony-bundle",
     "description": "helper for translated related pages ",
-    "keywords": ["deploy","command"],
+    "keywords": ["translation","bridge"],
     "homepage": "no page yet",
     "license": "CC-BY-SA-3.0",
     "authors": [
         {
-            "name": "Faun",
+            "name": "Woecifaun",
             "homepage": "no page yet",
             "email": "woecifaun@gmail.com",
             "role": "Developer"
         }
     ],
+    "autoload": {
+        "psr-0": { "Woecifaun\\Bundle\\TranslationBridgeBundle": "" }
+    },
     "require": {
         "php": ">=5.3.2"
     },
-    "target-dir": "Faun/TranslationBridgeBundle"
+    "target-dir": ""
 }
