@@ -1,0 +1,9 @@
+parameters:
+    woecifaun.translationBridge.appLocales: [fr, en]
+
+services:
+    sensio_framework_extra.view.listener:
+        class: Woecifaun\TranslationBridgeBundle\EventListener\TranslationBridgeListener
+        arguments: [@router, %woecifaun.translationBridge.appLocales%]
+        tags:
+           - { name: kernel.event_subscriber }
