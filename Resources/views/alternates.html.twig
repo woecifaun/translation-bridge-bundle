@@ -1,0 +1,7 @@
+{% if translation_bridge is defined and translation_bridge is not empty %}
+{% spaceless %}
+    {% for locale, url in translation_bridge %}
+        <link rel="alternate" hreflang="{{ locale }}" href="{{ url }}" />
+    {% endfor %}
+{% endspaceless %}
+{% endif %}

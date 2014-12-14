@@ -1,0 +1,9 @@
+{% if translation_bridge is defined and translation_bridge is not empty %}
+    {% for locale,url in translation_bridge %}
+        {% if locale == app.request.getLocale() %}
+            <span>{{ locale }}</span>
+        {% else %}
+            <a href="{{ url }}">{{ locale }}</a>
+        {% endif %}
+    {% endfor %}
+{% endif %}

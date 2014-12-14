@@ -1,0 +1,21 @@
+{% if translation_bridge is defined and translation_bridge is not empty %}
+{% spaceless %}
+    <div class="translation-bridge dropdown">
+        <div class="dropdown-toggle" type="button" id="translationBridge" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-globe"></span>
+            <span class="caret"></span>
+        </div>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        {% for locale,url in translation_bridge %}
+            <li role="presentation">
+            {% if locale == app.request.getLocale() %}
+                <span role="menuitem" tabindex="-1" >{{ locale }}</span>
+            {% else %}
+                <a role="menuitem" tabindex="-1" href="{{ url }}">{{ locale }}</a>
+            {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endspaceless %}
+{% endif %}
