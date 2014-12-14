@@ -80,45 +80,29 @@ class TranslationBridgeListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         $parameters = $event->getControllerResult();
-        $templating = $this->container->get('templating');
 
-        if (null === $parameters) {
-            if (!$vars = $request->attributes->get('_template_vars')) {
-                if (!$vars = $request->attributes->get('_template_default_vars')) {
-                    return;
-                }
-            }
-
-            $parameters = array();
-            foreach ($vars as $var) {
-                $parameters[$var] = $request->attributes->get($var);
-            }
+        if (!$bridge = $request->attributes->get('_translation_bridge')) {
+            return;
         }
 
         if (!is_array($parameters)) {
             return $parameters;
         }
 
-        if (!$template = $request->attributes->get('_template')) {
-            return $parameters;
+        if (null === $parameters) {
+            $parameters = [];
         }
 
-        if (!$request->attributes->get('_template_streamable')) {
-            $event->setResponse($templating->renderResponse($template, $parameters));
-        } else {
-            $callback = function () use ($templating, $template, $parameters) {
-                return $templating->stream($template, $parameters);
-            };
+        $parameters['translation_bridge'] = $bridge;
 
-            $event->setResponse(new StreamedResponse($callback));
-        }
+        $event->setControllerResult($parameters);
     }
 
     public static function getSubscribedEvents()
     {
         return array(
-            KernelEvents::CONTROLLER => array('onKernelController', -128),
-            // KernelEvents::VIEW => 'onKernelView',
+            KernelEvents::CONTROLLER => array('onKernelController'),
+            KernelEvents::VIEW => array('onKernelView', 1),
         );
     }
 }

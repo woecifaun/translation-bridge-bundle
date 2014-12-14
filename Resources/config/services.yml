@@ -2,7 +2,7 @@ parameters:
     woecifaun.translationBridge.appLocales: [fr, en]
 
 services:
-    sensio_framework_extra.view.listener:
+    woecifaun_translation_bridge.view.listener:
         class: Woecifaun\TranslationBridgeBundle\EventListener\TranslationBridgeListener
         arguments: [@router, %woecifaun.translationBridge.appLocales%]
         tags:
