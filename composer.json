@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "helper for translated related pages ",
     "keywords": ["translation","bridge"],
-    "homepage": "no page yet",
+    "homepage": "https://github.com/woecifaun/translation-bridge-bundle",
     "license": "CC-BY-SA-3.0",
     "authors": [
         {
@@ -14,10 +14,10 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Woecifaun\\TranslationBridgeBundle\\": "" }
+        "psr-4": { "Woecifaun\\Bundle\\TranslationBridgeBundle\\": "" }
     },
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.4"
     },
     "target-dir": ""
 }
