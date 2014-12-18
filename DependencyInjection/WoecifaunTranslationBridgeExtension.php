@@ -1,6 +1,6 @@
 <?php
 
-namespace Woecifaun\TranslationBridgeBundle\DependencyInjection;
+namespace Woecifaun\Bundle\TranslationBridgeBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

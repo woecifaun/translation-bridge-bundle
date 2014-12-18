@@ -1,15 +1,6 @@
 <?php
 
-/*
- * This file is part of the Symfony framework.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
-namespace Woecifaun\TranslationBridgeBundle\EventListener;
+namespace Woecifaun\Bundle\TranslationBridgeBundle\EventListener;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -22,8 +13,6 @@ use Symfony\Component\Routing\RouterInterface;
 
 /**
  * The TemplateListener class handles the Template annotation.
- *
- * @author Fabien Potencier <fabien@symfony.com>
  */
 class TranslationBridgeListener implements EventSubscriberInterface
 {

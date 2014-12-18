@@ -1,6 +1,6 @@
 <?php
 
-namespace Woecifaun\TranslationBridgeBundle;
+namespace Woecifaun\Bundle\TranslationBridgeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

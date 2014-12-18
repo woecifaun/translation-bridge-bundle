@@ -3,7 +3,7 @@ parameters:
 
 services:
     woecifaun_translation_bridge.view.listener:
-        class: Woecifaun\TranslationBridgeBundle\EventListener\TranslationBridgeListener
+        class: Woecifaun\Bundle\TranslationBridgeBundle\EventListener\TranslationBridgeListener
         arguments: [@router, %woecifaun.translationBridge.appLocales%]
         tags:
            - { name: kernel.event_subscriber }

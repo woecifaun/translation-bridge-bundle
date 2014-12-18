@@ -1,6 +1,6 @@
 <?php
 
-namespace Woecifaun\TranslationBridgeBundle\Configuration;
+namespace Woecifaun\Bundle\TranslationBridgeBundle\Configuration;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationAnnotation;
 
