@@ -63,7 +63,7 @@ class TranslationBridge implements TranslationBridgeInterface
      * {@inheritdoc }
      */
     public function setRequest(Request $request)
-    {ld($request);die;
+    {
         $this->request = $request;
 
         return $this;
