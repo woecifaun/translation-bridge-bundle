@@ -9,10 +9,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationAnnotation;
  */
 class TranslationBridge extends ConfigurationAnnotation
 {
-    public function setValue($value='')
-    {
-        $this->value = $value;
-    }
+    /**
+     * Corresponding list of wildcards with controller parameters properties
+     *
+     * @var array
+     */
+    private $placeholders = [];
 
     /**
      * Returns the annotation alias name.
@@ -34,5 +36,29 @@ class TranslationBridge extends ConfigurationAnnotation
     public function allowArray()
     {
         return false;
+    }
+
+    /**
+     * Gets the value of placeholders.
+     *
+     * @return array
+     */
+    public function getPlaceholders()
+    {
+        return $this->placeholders;
+    }
+
+    /**
+     * Sets the value of placeholders.
+     *
+     * @param array $placeholders the placeholders
+     *
+     * @return self
+     */
+    public function setPlaceholders(array $placeholders)
+    {
+        $this->placeholders = $placeholders;
+
+        return $this;
     }
 }

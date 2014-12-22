@@ -2,8 +2,20 @@ parameters:
     woecifaun.translationBridge.appLocales: [fr, en]
 
 services:
-    woecifaun_translation_bridge.view.listener:
+    woecifaun_translation_bridge.property_accessor:
+        class: Symfony\Component\PropertyAccess\PropertyAccessor
+        arguments: [true, false]
+
+    woecifaun_translation_bridge:
+        class: Woecifaun\Bundle\TranslationBridgeBundle\Model\TranslationBridge
+        arguments:
+            - @router
+            - @woecifaun_translation_bridge.property_accessor
+            - %woecifaun.translationBridge.appLocales%
+
+    woecifaun_translation_bridge.event_subscriber:
         class: Woecifaun\Bundle\TranslationBridgeBundle\EventListener\TranslationBridgeListener
-        arguments: [@router, %woecifaun.translationBridge.appLocales%]
+        arguments:
+            - @woecifaun_translation_bridge
         tags:
            - { name: kernel.event_subscriber }

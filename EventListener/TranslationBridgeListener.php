@@ -2,39 +2,37 @@
 
 namespace Woecifaun\Bundle\TranslationBridgeBundle\EventListener;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\StreamedResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Routing\RouterInterface;
+
+use Woecifaun\Bundle\TranslationBridgeBundle\Model\TranslationBridgeInterface;
 
 /**
- * The TemplateListener class handles the Template annotation.
+ * The TranslationBridgeListener class handles the TranslationBridge annotation.
  */
 class TranslationBridgeListener implements EventSubscriberInterface
 {
-    private $appLocales;
-
-    private $router;
+    /**
+     * The service generating the translated URLs
+     *
+     * @var array
+     */
+    private $translationBridge;
 
     /**
      * Construct
      *
-     * @param RouterInterface $router
-     * @param array           $appLocales
+     * @param TranslationBridgeInterface $translationBridge
      */
-    public function __construct(RouterInterface $router, $appLocales)
+    public function __construct(TranslationBridgeInterface $translationBridge)
     {
-        $this->router     = $router;
-        $this->appLocales = $appLocales;
+        $this->translationBridge = $translationBridge;
     }
 
     /**
-     * Guesses the template name to render and its variables and adds them to
-     * the request object.
+     * Generate the array of same page/different locale
      *
      * @param FilterControllerEvent $event A FilterControllerEvent instance
      */
@@ -50,11 +48,11 @@ class TranslationBridgeListener implements EventSubscriberInterface
             return;
         }
 
-        $bridge =  [];
-        $route = $request->get('_route');
-        foreach ($this->appLocales as $locale) {
-            $bridge[$locale] = $this->router->generate($route, ['locale' => $locale], true);
-        }
+        $bridge = $this->translationBridge
+            ->setRequest($request)
+            ->setConfiguration($configuration)
+            ->generateBridge();
+        ;
 
         $request->attributes->set('_translation_bridge', $bridge);
     }
@@ -87,11 +85,16 @@ class TranslationBridgeListener implements EventSubscriberInterface
         $event->setControllerResult($parameters);
     }
 
+    /**
+     * Return an array of subscribed events
+     */
     public static function getSubscribedEvents()
     {
         return array(
-            KernelEvents::CONTROLLER => array('onKernelController'),
-            KernelEvents::VIEW => array('onKernelView', 1),
+            // The onKernelController event must be listened
+            // after any ParamConverter handling
+            KernelEvents::CONTROLLER => array('onKernelController', -64),
+            KernelEvents::VIEW       => array('onKernelView', 1),
         );
     }
 }
