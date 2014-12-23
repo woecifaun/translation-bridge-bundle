@@ -23,11 +23,11 @@ interface TranslationBridgeInterface
     /**
      * Sets the configuration defined in the TranslationBridge Annotation
      *
-     * @param Configuration $configuration
+     * @param Configuration $config
      *
      * @return self
      */
-    public function setConfiguration(Configuration $configuration);
+    public function setConfiguration(Configuration $config);
 
     /**
      * Gets an array of translated URLs for the current page

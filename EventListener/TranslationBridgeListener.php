@@ -87,6 +87,8 @@ class TranslationBridgeListener implements EventSubscriberInterface
 
     /**
      * Return an array of subscribed events
+     *
+     * @return array subscribed events
      */
     public static function getSubscribedEvents()
     {

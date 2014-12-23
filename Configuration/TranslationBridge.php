@@ -5,6 +5,8 @@ namespace Woecifaun\Bundle\TranslationBridgeBundle\Configuration;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationAnnotation;
 
 /**
+ * TranslationBridge Annotation
+ * 
  * @Annotation
  */
 class TranslationBridge extends ConfigurationAnnotation

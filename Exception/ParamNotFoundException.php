@@ -2,8 +2,17 @@
 
 namespace Woecifaun\Bundle\TranslationBridgeBundle\Exception;
 
+/**
+ * Exception thrown when Translation Bridge
+ * cannot find matching controller parameter
+ */
 class ParamNotFoundException extends Exception
 {
+    /**
+     * Construct
+     * @param string $paramName name of the invalid param
+     * @param string $route route identifier
+     */
     public function __construct($paramName, $route)
     {
         $message = <<<'EOD'

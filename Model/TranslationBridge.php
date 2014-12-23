@@ -60,7 +60,11 @@ class TranslationBridge implements TranslationBridgeInterface
     }
 
     /**
-     * {@inheritdoc }
+     * Sets the request
+     *
+     * @param Request $request
+     *
+     * @return self
      */
     public function setRequest(Request $request)
     {
@@ -70,7 +74,11 @@ class TranslationBridge implements TranslationBridgeInterface
     }
 
     /**
-     * {@inheritdoc }
+     * Sets the configuration defined in the TranslationBridge Annotation
+     *
+     * @param Configuration $config
+     *
+     * @return self
      */
     public function setConfiguration(Configuration $config)
     {
@@ -79,6 +87,15 @@ class TranslationBridge implements TranslationBridgeInterface
         return $this;
     }
 
+    /**
+     * Gets the translated (or not) value for a route parameter
+     * using controller parameter
+     *
+     * @param string $property accessor path
+     * @param string $locale locale in which value should be returned
+     *
+     * @return misc
+     */
     private function getParameter($property, $locale)
     {
         list($paramName, $property) = explode('.', $property, 2);
@@ -95,7 +112,9 @@ class TranslationBridge implements TranslationBridgeInterface
     }
 
     /**
-     * {@inheritdoc }
+     * Gets an array of translated URLs for the current page
+     *
+     * @return array
      */
     public function generateBridge()
     {
