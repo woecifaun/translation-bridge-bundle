@@ -2,8 +2,7 @@
 
 This bundle aims to provide an easy way to generate links to same-pages-but-different-locales of a website.
 
-Example
-=======
+## Example
 
 Imagine you need to generate the list of localized URLs corresponding to the english one below:
 ```
@@ -69,13 +68,17 @@ HTML code generated will be as following:
 …
 ```
 
+## Requirements
 
+* __Use of ParamConverter:__ 
+As the Translation Bridge Bundle tries to match annotation settings to controller arguments in order to call the correct methods on them, wildcards values need to be converted to PHP objects.
+* __Use of @Template() Annotation:__
+The Translation Bridge array will be injected in the array returned by the controller when used in conjonction with the Template() Annotation. If the value returned by the controller is not an array, the Translation Bridge logic won't even be run.
 
-Installation
-============
+## Installation
 
-Step 1: Enable the repository in your composer.json
----------------------------
+### Step 1: Enable the repository in your composer.json
+
 
 Add the following lines to your `composer.json`
 
@@ -90,8 +93,7 @@ Add the following lines to your `composer.json`
 
 > :package: Packagist install is coming, thus this step won't be needed anymore.
 
-Step 2: Download the Bundle
----------------------------
+### Step 2: Download the Bundle
 
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
 
@@ -101,8 +103,7 @@ $ composer require woecifaun/translation-bridge-bundle:~0.0
 
 This command requires you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
-Step 3: Enable the Bundle
--------------------------
+### Step 3: Enable the Bundle
 
 Then, enable the bundle by adding the following line in the `app/AppKernel.php`
 file of your project:
