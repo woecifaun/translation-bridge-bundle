@@ -5,12 +5,12 @@ This bundle aims to provide an easy way to generate links to same-pages-but-diff
 Example
 =======
 
-You want to generate the list of localized URLs corresponding to the english page:
+Imagine you need to generate the list of localized URLs corresponding to the english one below:
 ```
 http://mydomain.tld/en/category/drawing/pencil/ff0000
 ```
 
-Its constructed via the following route (using BeSimpleI18nRoutingBundle)
+constructed via the following route (using BeSimpleI18nRoutingBundle)
 
 ```yml
 front_category_item_color:
@@ -54,28 +54,54 @@ The following array will then be injected in the template with your other variab
 ]
 ```
 
-To generate the alternate links (see [Google article on translations](https://support.google.com/webmasters/answer/189077?hl=en)), just include the following code in the `<head>` element of your page:
+To generate the alternate links (see [Google article on translations](https://support.google.com/webmasters/answer/189077?hl=en)), just include the following code in the `<head>` element of your twig template:
 
 ```twig
 {% include 'WoecifaunTranslationBridgeBundle::alternates.html.twig' %}
 ```
 
+HTML code generated will be as following:
+```html
+…
+<link rel="alternate" href="http://mydomain.tld/en/category/drawing/pencil/ff0000" hreflang="en" />
+<link rel="alternate" href="http://mydomain.tld/fr/categorie/dessin/crayon/ff0000" hreflang="fr" />
+<link rel="alternate" href="http://mydomain.tld/en/categoria/disegno/matita/ff000" hreflang="it" />
+…
+```
+
+
 
 Installation
 ============
 
-Step 1: Download the Bundle
+Step 1: Enable the repository in your composer.json
+---------------------------
+
+Add the following lines to your `composer.json`
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/woecifaun/translation-bridge-bundle"
+    }
+],
+```
+
+> :package: Packagist install is coming, thus this step won't be needed anymore.
+
+Step 2: Download the Bundle
 ---------------------------
 
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require woecifaun/translation-bridge-bundle:dev-master
+$ composer require woecifaun/translation-bridge-bundle:~0.0
 ```
 
 This command requires you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
-Step 2: Enable the Bundle
+Step 3: Enable the Bundle
 -------------------------
 
 Then, enable the bundle by adding the following line in the `app/AppKernel.php`
@@ -93,7 +119,7 @@ class AppKernel extends Kernel
         $bundles = array(
             // ...
 
-            new Woecifaun\Bundle\TranslationBridge\WoecifaunTranslatioBridgeBundle(),
+            new Woecifaun\Bundle\TranslationBridgeBundle\WoecifaunTranslationBridgeBundle(),
         );
 
         // ...
