@@ -74,16 +74,17 @@ HTML code generated will be as following:
 As the Translation Bridge Bundle tries to match annotation settings to controller arguments in order to call the correct methods on them, wildcards values need to be converted to PHP objects.
 * __Use of @Template() Annotation:__
 The Translation Bridge array will be injected in the array returned by the controller when used in conjonction with the Template() Annotation. If the value returned by the controller is not an array, the Translation Bridge logic won't even be run.
-* __woecifaun.translationBridge.appLocales__ listing all the locale paths to build must be defined in your parameters file.
+* __woecifaun.translationBridge.appLocales__ listing every locale affected by the Translation Bridge must be defined in your parameters file.
 
 ## Logic customization
 
-In case you want or you need to change the logic handling the routes translation, just add the following line in your parameters file:
+In case you want or you need to change the logic handling the routes translation, just add the following line in your parameters file (with a real path):
 ```
 woecifaun_translation_bridge.class: My\Bundle\MyBundle\PathTo\MyOwn\TranslationBridge
 ```
 
-A new instance of your own class will created. `router` and `property_accessor` services as well as the `appLocales` parameter (see above) will be automatically injected via the constructor.
+* The class must implement the `Woecifaun\Bundle\TranslationBridgeBundle\Model\TranslationBridgeInterface`.
+* `router` and `property_accessor` services as well as the `appLocales` parameter (see above) will be automatically injected via the constructor.
 
 
 ## Installation
