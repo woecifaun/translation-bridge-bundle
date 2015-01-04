@@ -76,6 +76,10 @@ As the Translation Bridge Bundle tries to match annotation settings to controlle
 The Translation Bridge array will be injected in the array returned by the controller when used in conjonction with the Template() Annotation. If the value returned by the controller is not an array, the Translation Bridge logic won't even be run.
 * __woecifaun.translationBridge.appLocales__ listing every locale affected by the Translation Bridge must be defined in your parameters file.
 
+```yml
+woecifaun.translationBridge.appLocales: [fr, en, it, de]
+```
+
 ## Logic customization
 
 In case you want or you need to change the logic handling the routes translation, just add the following line in your parameters file (with a real path):
