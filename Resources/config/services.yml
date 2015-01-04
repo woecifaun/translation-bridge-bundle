@@ -1,5 +1,5 @@
 parameters:
-    woecifaun.translationBridge.appLocales: [fr, en]
+    woecifaun_translation_bridge.class: Woecifaun\Bundle\TranslationBridgeBundle\Model\TranslationBridge
 
 services:
     woecifaun_translation_bridge.property_accessor:
@@ -7,7 +7,7 @@ services:
         arguments: [true, false]
 
     woecifaun_translation_bridge:
-        class: Woecifaun\Bundle\TranslationBridgeBundle\Model\TranslationBridge
+        class: %woecifaun_translation_bridge.class%
         arguments:
             - @router
             - @woecifaun_translation_bridge.property_accessor
