@@ -49,7 +49,7 @@ The following array will then be injected in the template with your other variab
 [
     'en' => 'http://mydomain.tld/en/category/drawing/pencil/ff0000',
     'fr' => 'http://mydomain.tld/fr/categorie/dessin/crayon/ff0000',
-    'it' => 'http://mydomain.tld/en/categoria/disegno/matita/ff0000',
+    'it' => 'http://mydomain.tld/it/categoria/disegno/matita/ff0000',
 ]
 ```
 
@@ -64,7 +64,7 @@ HTML code generated will be as following:
 …
 <link rel="alternate" href="http://mydomain.tld/en/category/drawing/pencil/ff0000" hreflang="en" />
 <link rel="alternate" href="http://mydomain.tld/fr/categorie/dessin/crayon/ff0000" hreflang="fr" />
-<link rel="alternate" href="http://mydomain.tld/en/categoria/disegno/matita/ff000" hreflang="it" />
+<link rel="alternate" href="http://mydomain.tld/it/categoria/disegno/matita/ff000" hreflang="it" />
 …
 ```
 
