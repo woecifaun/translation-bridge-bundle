@@ -93,31 +93,25 @@ woecifaun_translation_bridge.class: My\Bundle\MyBundle\PathTo\MyOwn\TranslationB
 
 ## Installation
 
+:information_source:  The following commands require you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
+
 ### Step 1: Enable the repository in your composer.json
 
+In your terminal and located in your project directory, type the command
 
-Add the following lines to your `composer.json`
-
-```json
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/woecifaun/translation-bridge-bundle"
-    }
-],
+```shell
+$ composer config repositories.translation-bridge vcs https://github.com/woecifaun/translation-bridge-bundle
 ```
 
 > :package: Packagist install is coming, thus this step won't be needed anymore.
 
 ### Step 2: Download the Bundle
 
-Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
+Then execute the following command to download the latest version of this bundle:
 
-```bash
+```shell
 $ composer require woecifaun/translation-bridge-bundle:~0.0
 ```
-
-This command requires you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
 ### Step 3: Enable the Bundle
 
