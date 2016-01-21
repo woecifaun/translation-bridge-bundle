@@ -139,3 +139,5 @@ class AppKernel extends Kernel
     // ...
 }
 ```
+
+Test
